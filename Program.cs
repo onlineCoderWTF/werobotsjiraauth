@@ -16,6 +16,8 @@ namespace werobotsjiraauth
             //
             var jiraIO = Jira.CreateOAuthRestClient(lines[0], lines[1], lines[2], lines[3], lines[4]);  // URL, consKey, consSec, authAcc, authSec
             //
+            jiraIO.RestClient.Settings.EnableRequestTrace = true;
+            //
             Atlassian.Jira.Issue moveTo = jiraIO.Issues.GetIssueAsync(lines[5]).Result;
             //
             Console.WriteLine("Task info {0}: {1}", moveTo.Key, moveTo.Summary);
